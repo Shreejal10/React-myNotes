@@ -20,8 +20,24 @@ const NoteState = (props) => {
         setNotes(json);
     }
 
+    //Add a Note
+    const addNote = async (title, description, tag) => {
+        console.log("Adding a new note");
+        //API Call
+        const response = await fetch(`${host}/api/notes/addnote`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM1MTFiNGI4NTJmNDYxZWM0ZDNiMTYyIn0sImlhdCI6MTY2NjI2MTYwN30.94X5OAT_AAy2B3deGyA61NNJHjzqV3nbBJaTMRdfqIE'
+            },
+            body: JSON.stringify({ title, description, tag })
+        });
+        const note = await response.json();
+        setNotes(notes.concat(note))
+    }
+
     return (
-        <NoteContext.Provider value={{ notes, fetchNote }}>
+        <NoteContext.Provider value={{ notes, fetchNote, addNote }}>
             {props.children}
         </NoteContext.Provider>
     )
