@@ -23,7 +23,7 @@ const NoteItem = (props) => {
                     <p className="leading-relaxed mb-3 text-gray-300">{note.description}</p>
                     <div className="text-center leading-none flex justify-center absolute bottom-0 left-0 w-full py-4">
                         <span className="text-white mr-3 inline-flex items-center leading-none text-sm pr-3 py-1 border-r-2 border-gray-200 ">
-                            <RiDeleteBin5Line className='cursor-pointer hover:scale-110' size={20} onClick={() => { deleteNote(note._id), props.showAlert("Note deleted successfully", "red") }} />
+                            <RiDeleteBin5Line className='cursor-pointer hover:scale-110' size={20} onClick={() => { deleteNote(note._id), props.showAlert("Note deleted successfully", "green") }} />
                         </span>
                         <span className="text-white inline-flex items-center leading-none text-sm ">
                             <FiEdit onClick={() => updateNote(note)} className=' cursor-pointer hover:scale-110' size={20} />
