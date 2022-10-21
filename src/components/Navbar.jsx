@@ -2,11 +2,12 @@ import React from 'react'
 import { VscSignOut } from 'react-icons/vsc'
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png"
-const Navbar = () => {
+const Navbar = (props) => {
     const navigate = useNavigate();
     const handleLogOut = () => {
         localStorage.removeItem('token');
         navigate("/login");
+        props.showAlert("Logged Out Successfully", "green")
     }
     return (
         <div className='flex justify-between items-center p-4  w-full absolute bg-[#0a3557] h-16'>

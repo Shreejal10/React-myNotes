@@ -9,7 +9,7 @@ const Home = (props) => {
     return (
         <>
             {openModal && <AddNote showAlert={props.showAlert} setOpenModal={setOpenModal} />}
-            <Navbar />
+            <Navbar showAlert={props.showAlert} />
             <div className='pt-16'>
                 <h1 className='text-center text-4xl text-white mt-3'>Hello, </h1>
                 <div className=' container mx-auto flex items-center justify-around py-4 mt-6'>
