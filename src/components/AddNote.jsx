@@ -9,7 +9,7 @@ const AddNote = (props) => {
         addNote(note.title, note.description, note.tag);
         setNote({ title: "", description: "", tag: "" })
         props.setOpenModal(false);
-        console.log(note);
+        props.showAlert("Note added successfully", "green")
     }
     const onChange = (e) => {
         setNote({ ...note, [e.target.name]: e.target.value })

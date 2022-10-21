@@ -4,3 +4,13 @@
 body{
     background-color: #2a6a9a;
 }
+.green{
+    background-color: rgb(83, 131, 10);
+    border: green
+}
+
+.red{
+    background-color: red;
+    border: red;
+
+}

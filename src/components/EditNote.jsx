@@ -11,6 +11,7 @@ const EditNote = (props) => {
         e.preventDefault();
         editNote(props.enote.id, props.enote.etitle, props.enote.edescription, props.enote.etag)
         props.setOpenModal(false)
+        props.showAlert("Note edited succesfully", "green")
     }
     const onChange = (e) => {
         props.setENote({ ...props.enote, [e.target.name]: e.target.value })

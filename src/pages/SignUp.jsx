@@ -6,18 +6,22 @@ const SignUp = () => {
     const [credentials, setCredentials] = useState({ fname: "", lname: "", email: "", password: "" })
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://localhost:5000/api/auth/createuser", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ fname: credentials.fname, lname: credentials.lname, email: credentials.email, password: credentials.password })
-        });
-        const json = await response.json();
-        console.log(json);
-        //Save the authToken
-        localStorage.setItem('token', json.authtoken);
-        navigate("/login");
+        try {
+            const response = await fetch("http://localhost:5000/api/auth/createuser", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ fname: credentials.fname, lname: credentials.lname, email: credentials.email, password: credentials.password })
+            });
+            const json = await response.json();
+            //Save the authToken
+            localStorage.setItem('token', json.authtoken);
+            navigate("/login");
+            props.showAlert("Account Created Successfully. Please Login to continue", "green")
+        } catch (error) {
+            props.showAlert(error.message, "red")
+        }
 
     }
     const onChange = (e) => {

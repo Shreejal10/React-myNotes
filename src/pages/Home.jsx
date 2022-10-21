@@ -4,11 +4,11 @@ import Note from '../components/Note'
 import AddNote from '../components/AddNote'
 import Navbar from "../components/Navbar"
 
-const Home = () => {
+const Home = (props) => {
     const [openModal, setOpenModal] = useState(false);
     return (
         <>
-            {openModal && <AddNote setOpenModal={setOpenModal} />}
+            {openModal && <AddNote showAlert={props.showAlert} setOpenModal={setOpenModal} />}
             <Navbar />
             <div className='pt-16'>
                 <h1 className='text-center text-4xl text-white mt-3'>Hello, </h1>
@@ -25,7 +25,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div>
-                    <Note />
+                    <Note showAlert={props.showAlert} />
                 </div>
 
 
