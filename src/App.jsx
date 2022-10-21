@@ -27,10 +27,10 @@ function App() {
             <div>
               <Alert alert={alert} />
               <Routes>
-                <Route path="/home" element={<Home showAlert={showAlert} />}></Route>
+                <Route path="/" element={<Home showAlert={showAlert} />}></Route>
                 <Route index path="/login" element={<Login showAlert={showAlert} />}></Route>
                 <Route path="/signup" element={<SignUp showAlert={showAlert} />}></Route>
-                <Route path="/" element={<Navigate to="/login" />}></Route>
+                {/* <Route path="/" element={<Navigate to="/login" />}></Route> */}
               </Routes>
             </div>
           </BrowserRouter>

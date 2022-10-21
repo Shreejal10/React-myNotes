@@ -19,7 +19,7 @@ const Login = (props) => {
                 //Save the authToken
                 localStorage.setItem('token', json.authToken);
                 console.log(json.authToken);
-                navigate("/home");
+                navigate("/");
                 props.showAlert("Login Successfull", "green")
             }
             else {
