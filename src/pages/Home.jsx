@@ -2,12 +2,14 @@ import { React, useState } from 'react'
 import { IoAddCircleOutline } from 'react-icons/io5'
 import Note from '../components/Note'
 import AddNote from '../components/AddNote'
+import Navbar from "../components/Navbar"
 
 const Home = () => {
     const [openModal, setOpenModal] = useState(false);
     return (
         <>
             {openModal && <AddNote setOpenModal={setOpenModal} />}
+            <Navbar />
             <div className='pt-16'>
                 <h1 className='text-center text-4xl text-white mt-3'>Hello, </h1>
                 <div className=' container mx-auto flex items-center justify-around py-4 mt-6'>
