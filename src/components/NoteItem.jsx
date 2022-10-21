@@ -8,10 +8,15 @@ const NoteItem = (props) => {
     const { note } = props
     const context = useContext(NoteContext);
     const { deleteNote } = context;
+    const [enote, setENote] = useState({ id: "", etitle: "", edescription: "", etag: "" });
+    const updateNote = (currentNote) => {
+        setOpenModal(true)
+        setENote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag, });
+    }
     return (
         <>
-            {openModal && <EditNote setOpenModal={setOpenModal} />}
-            <div className="p-4  md:w-1/2 lg:w-1/3">
+            {openModal && <EditNote enote={enote} setENote={setENote} setOpenModal={setOpenModal} />}
+            <div className="p-4  w-full md:w-1/2 lg:w-1/3">
                 <div className="h-full bg-[#13476e] bg-opacity-75 px-8 pt-9 pb-24 rounded-3xl overflow-hidden text-center relative">
                     <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-5">{note.tag}</h2>
                     <h1 className="title-font sm:text-2xl text-xl font-medium text-white mb-3">{note.title}</h1>
@@ -20,8 +25,8 @@ const NoteItem = (props) => {
                         <span className="text-white mr-3 inline-flex items-center leading-none text-sm pr-3 py-1 border-r-2 border-gray-200 ">
                             <RiDeleteBin5Line className='cursor-pointer hover:scale-110' size={20} onClick={() => { deleteNote(note._id) }} />
                         </span>
-                        <span onClick={() => { setOpenModal(true) }} className="text-white inline-flex items-center leading-none text-sm ">
-                            <FiEdit className=' cursor-pointer hover:scale-110' size={20} />
+                        <span className="text-white inline-flex items-center leading-none text-sm ">
+                            <FiEdit onClick={() => updateNote(note)} className=' cursor-pointer hover:scale-110' size={20} />
                         </span>
                     </div>
                 </div>

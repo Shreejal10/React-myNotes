@@ -50,8 +50,34 @@ const NoteState = (props) => {
         setNotes(newNotes);
     }
 
+    //Edit a Note
+    const editNote = async (id, title, description, tag) => {
+        //API Call
+        const response = await fetch(`${host}/api/notes/editnote/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM1MTFiNGI4NTJmNDYxZWM0ZDNiMTYyIn0sImlhdCI6MTY2NjI2MTYwN30.94X5OAT_AAy2B3deGyA61NNJHjzqV3nbBJaTMRdfqIE'
+            },
+            body: JSON.stringify({ title, description, tag })
+        });
+        const json = await response.json();
+
+        let newNotes = JSON.parse(JSON.stringify(notes))
+        for (let i = 0; i < newNotes.length; i++) {
+            const element = newNotes[i];
+            if (element._id === id) {
+                newNotes[i].title = title;
+                newNotes[i].description = description;
+                newNotes[i].tag = tag;
+                break;
+            }
+        }
+        setNotes(newNotes);
+    }
+
     return (
-        <NoteContext.Provider value={{ notes, fetchNote, addNote, deleteNote }}>
+        <NoteContext.Provider value={{ notes, fetchNote, addNote, deleteNote, editNote }}>
             {props.children}
         </NoteContext.Provider>
     )
