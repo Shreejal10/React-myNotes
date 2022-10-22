@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate, Link } from "react-router-dom";
 import logo from "../assets/logo.png"
 
-const SignUp = () => {
+const SignUp = (props) => {
     const navigate = useNavigate();
     const [credentials, setCredentials] = useState({ fname: "", lname: "", email: "", password: "" })
     const handleSubmit = async (e) => {
