@@ -3,10 +3,6 @@ import NoteContext from '../context/notes/NoteContext'
 const EditNote = (props) => {
     const context = useContext(NoteContext);
     const { editNote } = context;
-    // const [note, setNote] = useState({ id: "", etitle: "", edescription: "", etag: "" });
-    // const updateNote = (currentNote) => {
-    //     setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag, });
-    // }
     const handleEditNote = (e) => {
         e.preventDefault();
         editNote(props.enote.id, props.enote.etitle, props.enote.edescription, props.enote.etag)
